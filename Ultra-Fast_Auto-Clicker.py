@@ -23,10 +23,10 @@ def toggle():
     global confirm, botao
     
     if confirm == False:
-        for i in range(1, 0, -1):
-            botao.configure(text=str(i))
+        for num in range(3, 0, -1):
+            botao.configure(text=str(num))
             sleep(1)
-        botao.configure(text=f'Start/Stop ({key})')
+        botao.configure(text=f'Stop: {key}')
         
         confirm = True
         
@@ -37,7 +37,7 @@ def toggle():
     
     else:
         confirm = False
-        botao.configure(text=f'Start/Stop ({key})')
+        botao.configure(text=f'Start: {key}')
 
 def toggle_thread():
     thread = thr.Thread(target=toggle)
@@ -57,7 +57,7 @@ tecla_para_clicks_thread()
 
 space = ctk.CTkLabel(janela, text=None).pack()
 frame = ctk.CTkFrame(janela, width=180, height=80).place(x=10, y=10)
-botao = ctk.CTkButton(janela, text=f'Start/Stop ({key})', font=('',18), command=toggle_thread)
+botao = ctk.CTkButton(janela, text=f'Start: {key}', font=('',18), command=toggle_thread)
 botao.pack(ipady=8)
 
 janela.mainloop()
